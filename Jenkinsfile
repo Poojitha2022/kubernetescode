@@ -8,7 +8,7 @@ node {
     }
 
     stage('Build image') {
-       chmod 666 /var/run/docker.sock
+       
        app = docker.build("poojitha2022/test")
     }
 
