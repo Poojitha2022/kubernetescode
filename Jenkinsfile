@@ -28,7 +28,7 @@ node {
     }
 
     stage('Push image') {
-        sh 'gcloud auth configure-docker'
+        
         docker.withRegistry('https://gcr.io', 'gcr:woven-bonbon-396818') {
             app.push("${env.BUILD_NUMBER}")
         }
