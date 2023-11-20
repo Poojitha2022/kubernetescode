@@ -18,7 +18,7 @@ spec:
         app: flaskdemo
     spec:
       containers:
-      - image: poojitha2022/test:latest
+      - image: gcr.io/woven-bonbon-396818/test:latest
         name: flaskdemo
         resources: {}
 status: {}
