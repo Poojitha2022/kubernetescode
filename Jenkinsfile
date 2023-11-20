@@ -29,7 +29,7 @@ node {
 
     stage('Push image') {
         
-        docker.withRegistry('https://gcr.io', 'gcr:woven-bonbon-396818') {
+        docker.withRegistry('https://gcr.io', 'gcr:gcp_credentials') {
             app.push("${env.BUILD_NUMBER}")
         }
     }
