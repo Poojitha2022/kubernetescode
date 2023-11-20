@@ -32,10 +32,10 @@ node {
     }
 
     stage('Push image') {
-        
-        docker.withRegistry('https://us.gcr.io', 'gcr:gcp_credentials') {
+        docker push gcr.io/woven-bonbon-396818/test
+        /*docker.withRegistry('https://us.gcr.io', 'gcr:gcp_credentials') {
             app.push("${env.BUILD_NUMBER}")
-        }
+        }*/
     }
     
     stage('Update GIT') {
