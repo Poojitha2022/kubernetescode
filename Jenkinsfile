@@ -6,10 +6,17 @@ node {
 
         checkout scm
     }
+    stage('GCP Auth') {
+        steps {
+         withCredentials([usernameColonPassword(credentialsId: 'gcp_credentials', variable: 'gcp_credentials'), file(credentialsId: 'Json key', variable: 'gcp_json')]) {
+         sh 'gcloud auth activate-service-account --key-file=$Json key'
+        }
+      }
+    }
 
     stage('Build image') {
        
-       app = docker.build("poojitha2022/test")
+       app = docker.build("woven-bonbon-396818/test")
     }
 
     stage('Test image') {
@@ -21,8 +28,8 @@ node {
     }
 
     stage('Push image') {
-        
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+        sh 'gcloud auth configure-docker'
+        docker.withRegistry('https://gcr.io', 'gcr:woven-bonbon-396818') {
             app.push("${env.BUILD_NUMBER}")
         }
     }
@@ -36,7 +43,7 @@ node {
                         sh "git config user.name PoojithaK"
                         //sh "git switch master"
                         sh "cat deployment.yaml"
-                        sh "sed -i 's+poojitha2022/test.*+poojitha2022/test:${DOCKERTAG}+g' deployment.yaml"
+                        sh "sed -i 's+woven-bonbon-396818/test.*+woven-bonbon-396818/test:${DOCKERTAG}+g' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
