@@ -8,8 +8,8 @@ node {
     }
     stage('GCP Auth') {
         
-         withCredentials([usernameColonPassword(credentialsId: 'gcp_credentials', variable: 'gcp_credentials'), file(credentialsId: 'Json key', variable: 'gcp_json')]) {
-         sh 'gcloud auth activate-service-account --key-file=$Json key'
+         withCredentials([usernameColonPassword(credentialsId: 'gcp_credentials', variable: 'gcp_credentials'), file(credentialsId: 'gcp_json', variable: 'gcp_json')]) {
+         sh 'gcloud auth activate-service-account --key-file=$gcp_json'
         }
       
     }
