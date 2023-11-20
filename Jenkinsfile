@@ -20,7 +20,7 @@ node {
 
     stage('Build image') {
        
-       app = docker.build("woven-bonbon-396818/test")
+       app = docker.build("gcr.io/woven-bonbon-396818/test")
     }
 
     stage('Test image') {
