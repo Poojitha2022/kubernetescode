@@ -7,11 +7,11 @@ node {
         checkout scm
     }
     stage('GCP Auth') {
-        steps {
+        
          withCredentials([usernameColonPassword(credentialsId: 'gcp_credentials', variable: 'gcp_credentials'), file(credentialsId: 'Json key', variable: 'gcp_json')]) {
          sh 'gcloud auth activate-service-account --key-file=$Json key'
         }
-      }
+      
     }
 
     stage('Build image') {
