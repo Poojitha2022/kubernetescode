@@ -1,6 +1,10 @@
 node {
     def app
-
+    stage("Clear Workspace"){
+        
+          sh 'rm -rvf a*'
+        
+    }
     stage('Clone repository') {
       
 
