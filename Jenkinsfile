@@ -51,7 +51,7 @@ node {
                         sh "git add ."
                         sh "git diff --quiet && git diff --staged --quiet || git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
                         //sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git push https://github.com/Poojitha2022/kubernetescode.git HEAD:main"
+                        sh "git push origin main"
       }
     }
   }
