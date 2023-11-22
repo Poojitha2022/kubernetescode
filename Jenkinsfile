@@ -52,6 +52,7 @@ node {
                         sh "git branch"
                         //sh "git remote add origin 'https://github.com/Poojitha2022/kubernetescode.git'"
                         sh "git diff --quiet && git diff --staged --quiet || git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
+                        sh "git remote -v"
                         sh "git remote set-url origin 'https://github.com/Poojitha2022/kubernetescode.git'"
                         //sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
                         sh "git push -u origin HEAD:main"
