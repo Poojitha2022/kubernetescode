@@ -49,6 +49,7 @@ node {
                         sh "sed -i 's+woven-bonbon-396818/test.*+woven-bonbon-396818/test:${DOCKERTAG}+g' deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
+                        sh "git branch"
                         //sh "git remote add origin 'https://github.com/Poojitha2022/kubernetescode.git'"
                         sh "git diff --quiet && git diff --staged --quiet || git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
                         //sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
