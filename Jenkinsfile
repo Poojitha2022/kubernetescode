@@ -40,7 +40,7 @@ node {
     stage('Update GIT') {
             script {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                    withCredentials([gitUsernamePassword(credentialsId: 'gitlogin', gitToolName: 'Default')]) {
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh "git config user.email poojithakavikondala@gmail.com"
                         sh "git config user.name PoojithaK"
@@ -55,7 +55,7 @@ node {
                         sh "git remote -v"
                         sh "git remote set-url origin 'https://github.com/Poojitha2022/kubernetescode.git'"
                         //sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git push -u origin HEAD:main"
+                        sh "git push -u origin HEAD:main --force"
       }
     }
   }
